@@ -23,9 +23,9 @@ void SerialComm::sendOneTimeData() {
 	if (currentMillis - lastSendTimeOneTime >= oneTimeSendInterval) {
 		lastSendTimeOneTime = currentMillis;
 		sendString = "," + String(sendingProgress) + ","; 
-
 		sendOtherValuesNames();
 		sendValueAsChar(sendString, sendBuffer, sizeof(sendBuffer));
+		sendingProgress = 1;
 	}
 }
 
@@ -109,5 +109,4 @@ void SerialComm::startSerialConnection(bool fastBaudRate, bool waitForConnection
 	}
 	delay(2000);
 	Serial.println("Connection established");
-
 }

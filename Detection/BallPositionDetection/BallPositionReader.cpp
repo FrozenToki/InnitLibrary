@@ -5,6 +5,7 @@ BallPositionReader::BallPositionReader(ApplicationInnit* a) : app(a) {}
 
 void BallPositionReader::initializeBallPositionReader(size_t irSensorCount) {
 	irSensCount = irSensorCount;
+	irSensList.resize(irSensorCount);
 	
 	for (size_t i = 0; i < irSensCount; i++){
 		irSensList[i] = app->getSensorManager().getIrSensorByIndex(i);
