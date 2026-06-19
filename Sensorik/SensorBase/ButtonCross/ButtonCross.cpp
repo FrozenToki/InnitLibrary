@@ -26,7 +26,6 @@ void ButtonCross::update() {
 		
 			}
 		}
-		app->getSerialValuePool().set("Button C", press);
 	}
 	
 	
