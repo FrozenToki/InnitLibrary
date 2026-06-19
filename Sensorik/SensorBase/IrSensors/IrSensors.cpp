@@ -8,6 +8,15 @@ float IrSensor::getAngle() {
 	return angle;
 }
 
+void IrSensor::setAvrgAngle(float v) {
+	avrgAngle = v;
+}
+
+float IrSensor::getAvrgAngle() {
+	return avrgAngle;
+}
+
+
 void IrSensor::update() {
 	if (digitalRead(pin) == LOW) {
 		value++;
@@ -30,3 +39,10 @@ void IrSensor::setCalculatedValue(float v) {
 	calculatedValue = v;
 }
 
+Vector IrSensor::getVector() {
+	return vec;
+}
+
+void IrSensor::setVector(const Vector& v) {
+	vec = v;
+}

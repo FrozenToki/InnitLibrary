@@ -1,21 +1,25 @@
 #include "IrSensorReader.h"
 #include "app/ApplicationInnit.h"
 
-IrSensorReader::IrSensorReader(ApplicationInnit* a) : app(a) {
-	
+IrSensorReader::IrSensorReader(ApplicationInnit* a) : app(a) {}
+
+void IrSensorReader::initializeIrSensorReader(int irSensorCount) {
+	irSensCount = irSensorCount;
+	irSensList.resize(irSensorCount);
+	for (int i = 0; i < irSensCount; i++){
+		irSensList[i] = app->getSensorManager().getIrSensorByIndex(i);
+	}
 }
-/*
-* Kommentar
-*/
+
 void IrSensorReader::readAll(int ticks, bool useTimeMode, long unsigned int timeInMicSec) {
-	for (int s = 0; s < InnitConfig::COUNT_IR_SENSOR; s++) {
+	for (int s = 0; s < irSensCount; s++) {
 		irSensList[s]->resetValue();
 	}
 	
 	if (useTimeMode) {
 		unsigned long start = micros(); 
 		while (micros() - start < timeInMicSec) { 
-			for (int s = 0; s < InnitConfig::COUNT_IR_SENSOR; s++) { 
+			for (int s = 0; s < irSensCount; s++) { 
 				irSensList[s]->update(); 
 			}
 		}
@@ -24,7 +28,7 @@ void IrSensorReader::readAll(int ticks, bool useTimeMode, long unsigned int time
 	else {
 		unsigned long start = micros();
 		for (int i = 0; i < ticks; i++) {
-			for (int s = 0; s < InnitConfig::COUNT_IR_SENSOR; s++) {
+			for (int s = 0; s < irSensCount; s++) {
 				irSensList[s]->update();
 			}
 		}
@@ -37,7 +41,7 @@ float IrSensorReader::frequencyInMilSec(int timeInMicSec, float sensHits) {
 }
 
 void IrSensorReader::getAllValues(float array[]) {
-	for (int i = 0; i < InnitConfig::COUNT_IR_SENSOR; i++) {
+	for (int i = 0; i < irSensCount; i++) {
 		array[i] = irSensList[i]->getCalculatedValue();
 	}
 }
@@ -46,7 +50,7 @@ void IrSensorReader::getAllValues(float array[]) {
  * Werte in die Sensor Liste eintragen
  */
 void IrSensorReader::setAll() {
-	for (int i = 0; i < InnitConfig::COUNT_IR_SENSOR; i++) {
+	for (int i = 0; i < irSensCount; i++) {
 		irSensList[i]->setCalculatedValue(irSensList[i]->rawData()); 
 	}
 }

@@ -34,6 +34,8 @@ public:
 
 	void createIrSensor(int p, String n, float a);
 	IrSensor* getIrSensorByName(String n);
+	IrSensor* getIrSensorByIndex(int i);
+	IrSensor* getIrSensorByAngle(float angle);
 
 	void createIrRing(String n);
 	IrRing* getIrRingByName(String n);

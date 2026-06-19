@@ -2,8 +2,9 @@
 
 ApplicationInnit::ApplicationInnit() : sensorManager(this), sensorList(this), 
 	outputManager(this), outputList(this), drivingControl(this),
-	rotationControl(this), serialComm(this), geometry(this), loops(this),
-	irSensorReader(this), menuManager(this), calibration(this) {} 
+	rotationControl(this), serialComm(this), geometry(this), 
+	irSensorReader(this), menuManager(this), calibration(this), 
+	ballPositionReader(this) {} 
 
 SensorList& ApplicationInnit::getSensorList() {
 	return sensorList;
@@ -47,10 +48,6 @@ Geometry& ApplicationInnit::getGeometry() {
 	
 }
 
-Loops& ApplicationInnit::getLoops() {
-	return loops;
-}
-
 IrSensorReader& ApplicationInnit::getIrSensorReader() {
 	return irSensorReader;
 }
@@ -63,3 +60,6 @@ Calibration& ApplicationInnit::getCalibration() {
 	return calibration;
 }
 
+BallPositionReader &ApplicationInnit::getBallPositionReader() {
+ return ballPositionReader;
+}

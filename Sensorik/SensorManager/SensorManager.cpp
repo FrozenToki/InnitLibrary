@@ -58,6 +58,17 @@ IrSensor* SensorManager::getIrSensorByName(String n) {
   	return static_cast<IrSensor*>(sensor);
 }
 
+IrSensor* SensorManager::getIrSensorByIndex(int i) {
+	SensorBase* sensor = app->getSensorList().get(i);
+	return static_cast<IrSensor*>(sensor);
+}
+
+IrSensor *SensorManager::getIrSensorByAngle(float angle) {
+	SensorBase* sensor = app->getSensorList().getSensorByAngle(angle);
+	return static_cast<IrSensor*>(sensor);
+}
+
+
 // === IR_RING ===
 
 void SensorManager::createIrRing(String n) {

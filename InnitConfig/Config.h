@@ -8,6 +8,8 @@ public:
     static constexpr int MAX_OUTPUTS = 30;
     static constexpr int MAX_ERROR_MESSAGES = 5;
 
+    static constexpr int COUNT_MOVING_AVERAGE = 10;
+
     static constexpr int FORWARDS = 1;
     static constexpr int BACKWARDS = 0;
 
@@ -15,5 +17,5 @@ public:
     static constexpr float MIDDLE_SPEED = 0.6;
     static constexpr float HIGH_SPEED = 0.9;
 
-    static constexpr int COUNT_IR_SENSOR = 2;
+  
 };

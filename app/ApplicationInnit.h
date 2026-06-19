@@ -9,12 +9,13 @@
 #include "Driving/drivingControl/DrivingControl.h"
 #include "Serial/SerialComm.h"
 #include "Driving/rotationControl/RotationControl.h"
-#include "Geometry/Geometry.h"
-#include "loops/loops.h"
+#include "Math/Geometry/Geometry.h"
 #include "Sensorik/IrSensorReader/IrSensorReader.h"
 #include "MenuManager/MenuManager.h"
 #include "Sensorik/Calibration/Calibration.h"
 #include "Serial/ValuePool/SerialValuePool.h"
+#include "MovingAverage/MovingAverage.h"
+#include "Detection/BallPositionDetection/BallPositionReader.h"
 
 // Used to get acces to all the parts of the library from anywhere in the programm.
 // It has instances of all the different main parts of the library.
@@ -36,13 +37,13 @@ private:
 
 	Geometry geometry;
 
-	Loops loops;
-
 	IrSensorReader irSensorReader;
 
 	MenuManager menuManager;
 
 	Calibration calibration;
+
+	BallPositionReader ballPositionReader;
 public:
 	SensorList& getSensorList();
 	SensorManager& getSensorManager();
@@ -60,13 +61,13 @@ public:
 
 	Geometry& getGeometry();
 
-	Loops& getLoops();
-
 	IrSensorReader& getIrSensorReader();
 
 	MenuManager& getMenuManager();
 
 	Calibration& getCalibration();
+
+	BallPositionReader& getBallPositionReader();
 
 	void softwareReset();
 
