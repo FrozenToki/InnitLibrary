@@ -1,0 +1,19 @@
+{
+  "name": "InnitLib",
+  "version": "1.0.0",
+  "description": "Modular microcontroller library for sensors, outputs, menu and serial telemetry.",
+  "keywords": ["arduino", "microcontroller", "sensors", "outputs", "menu", "telemetry"],
+  "authors": [
+    {
+      "name": "TeamAltF4",
+      "maintainer": true
+    }
+  ],
+  "frameworks": ["arduino"],
+  "platforms": ["atmelsam", "atmelavr", "teensy", "espressif32", "espressif8266"],
+  "build": {
+    "srcFilter": [
+      "+<*>"
+    ]
+  }
+}
