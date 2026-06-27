@@ -14,5 +14,6 @@ public:
     static constexpr float MIDDLE_SPEED = 0.6;
     static constexpr float HIGH_SPEED = 0.9;
 
-  
+		static constexpr int BACKWARDS = 1;
+		static constexpr int FORWARDS = 0;
 };
