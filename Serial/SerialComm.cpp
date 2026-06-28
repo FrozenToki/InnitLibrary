@@ -25,7 +25,6 @@ void SerialComm::sendOneTimeData() {
 		sendString = "," + String(sendingProgress) + ","; 
 		sendOtherValuesNames();
 		sendValueAsChar(sendString, sendBuffer, sizeof(sendBuffer));
-		sendingProgress = 1;
 	}
 }
 
