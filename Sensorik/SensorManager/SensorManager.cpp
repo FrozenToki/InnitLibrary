@@ -6,9 +6,11 @@ SensorManager::SensorManager(ApplicationInnit* a) : app(a) {
 }
 
 // === BUTTON ===
-void SensorManager::createButton(int p, String n) {
+Button *SensorManager::createButton(int p, String n) {
 	Button* btn = new Button(p, n, app);
 	app->getSensorList().addSensor(btn);
+
+	return btn;
 }
 
 Button* SensorManager::getButtonByName(String n) {

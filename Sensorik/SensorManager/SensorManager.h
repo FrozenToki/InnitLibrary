@@ -21,7 +21,7 @@ public:
 	SensorManager(ApplicationInnit* a);
 
 	// Creates an instance of the button class and add's that to the sensorlist.
-	void createButton(int p, String n);
+	Button* createButton(int p, String n);
 	// Searches all sensors for the given name and returns it, 
 	// as an instance of the button class.
 	Button* getButtonByName(String n);
