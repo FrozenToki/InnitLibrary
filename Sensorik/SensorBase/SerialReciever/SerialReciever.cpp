@@ -1,7 +1,8 @@
-#include "IrRing.h"
+#include "SerialReciever.h"
 
-IrRing::IrRing(String n, ApplicationInnit* a) : SensorBase(0, n, a) {
-	Serial.begin(115200);
+SerialReciever::SerialReciever(HardwareSerialIMXRT* s,String n, ApplicationInnit* a) : SensorBase(0, n, a), serialType(s)  {
+	serialType->begin(115200);
+	
 }
 // https://forum.arduino.cc/t/serial-input-basics-updated/382007/3
 
@@ -9,7 +10,7 @@ IrRing::IrRing(String n, ApplicationInnit* a) : SensorBase(0, n, a) {
 
 //============
 
-void IrRing::update() {
+void SerialReciever::update() {
 	this->recvWithStartEndMarkers();
 	if (newData == true) {
 		strcpy(tempChars, receivedChars);
@@ -22,13 +23,13 @@ void IrRing::update() {
 }
 
 //============
-void IrRing::recvWithStartEndMarkers() {
+void SerialReciever::recvWithStartEndMarkers() {
 	static bool recvInProgress = false;
 	static byte ndx = 0;
 	char rc;
 
-	while (Serial.available() > 0) {
-		rc = Serial.read();
+	while (serialType->available() > 0) {
+		rc = serialType->read();
 
 		// IMMER neu starten bei <
 		if (rc == '<') {
@@ -60,7 +61,7 @@ void IrRing::recvWithStartEndMarkers() {
 
 //============
 
-void IrRing::parseData() {      // split the data into its parts
+void SerialReciever::parseData() {      // split the data into its parts
 
     //Serial.print("RAW: ");
     //Serial.println(tempChars);
@@ -75,21 +76,21 @@ void IrRing::parseData() {      // split the data into its parts
 
 //============
 
-void IrRing::showParsedData() {
+void SerialReciever::showParsedData() {
 	Serial.print("angle ");
 	Serial.println(angleFromRing);
 	Serial.print("strength ");
 	Serial.println(strengthFromRing);
 }
 
-float IrRing::rawData() {
+float SerialReciever::rawData() {
 	return 0.0f;
 }
 
-float IrRing::getAngle() {
+float SerialReciever::getAngle() {
 	return angleFromRing;
 }
 
-float IrRing::getStrength() {
+float SerialReciever::getStrength() {
 	return strengthFromRing;
 }

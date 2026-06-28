@@ -4,21 +4,21 @@
 
 const byte numChars = 32;
 
-class IrRing : public SensorBase {
+class SerialReciever : public SensorBase {
 private:
 	
 	char receivedChars[numChars];
-	char tempChars[numChars];        // temporary array for use when parsing
-
-			// variables to hold the parsed data
+	char tempChars[numChars];        
 	
 	float strengthFromRing = 0.0;
 	float angleFromRing = 0.0;
 
-	boolean newData = false;
+	bool newData = false;
+
+	HardwareSerialIMXRT* serialType;
 
 public:
-	IrRing(String n, ApplicationInnit* a);
+	SerialReciever(HardwareSerialIMXRT* s ,String n, ApplicationInnit* a);
 	void update() override;
 	void recvWithStartEndMarkers();
 	void parseData();

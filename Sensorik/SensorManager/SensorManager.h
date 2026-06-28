@@ -5,7 +5,7 @@
 #include "Sensorik/SensorBase/Bno055/Bno055.h"
 #include "Sensorik/SensorBase/SR04/Sr04.h"
 #include "Sensorik/SensorBase/IrSensors/IrSensors.h"
-#include "Sensorik/SensorBase/IrRing/IrRing.h"
+#include "Sensorik/SensorBase/SerialReciever/SerialReciever.h"
 #include "Sensorik/SensorBase/ButtonCross/ButtonCross.h"
 #include "Sensorik/SensorBase/EZ/EZ.h"
 
@@ -37,8 +37,8 @@ public:
 	IrSensor* getIrSensorByIndex(int i);
 	IrSensor* getIrSensorByAngle(float angle);
 
-	IrRing* createIrRing(String n);
-	IrRing* getIrRingByName(String n);
+	SerialReciever* createSerialReciever(String n);
+	SerialReciever* getSerialRecieverByName(String n);
 
 	ButtonCross* createButtonCross(String n, int pin, float v1, float v2, float v3, float v4, float v5);
 	ButtonCross* getButtonCrossByName(String n);

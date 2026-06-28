@@ -79,16 +79,16 @@ IrSensor *SensorManager::getIrSensorByAngle(float angle) {
 
 // === IR_RING ===
 
-IrRing* SensorManager::createIrRing(String n) {
-	IrRing* irRing = new IrRing(n, app);
-	app->getSensorList().addSensor(irRing); 
+SerialReciever* SensorManager::createSerialReciever(String n) {
+	SerialReciever* SerialReciever = new SerialReciever(n, app);
+	app->getSensorList().addSensor(SerialReciever); 
 
-	return irRing;
+	return SerialReciever;
 }
 
-IrRing* SensorManager::getIrRingByName(String n) {
+SerialReciever* SensorManager::getSerialRecieverByName(String n) {
 	SensorBase* sensor = app->getSensorList().getSensorByName(n);
-	return static_cast<IrRing*>(sensor);
+	return static_cast<SerialReciever*>(sensor);
 
 }
 

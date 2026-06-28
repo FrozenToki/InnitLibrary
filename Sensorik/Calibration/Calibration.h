@@ -4,7 +4,7 @@
 class ApplicationInnit;
 class ButtonCross;
 class IrSensor;
-class IrRing;
+class SerialReciever;
 
 class Calibration {
 private:
@@ -13,7 +13,7 @@ private:
 	ButtonCross* buttonC;
 	IrSensor* irL;
 	IrSensor* irR;
-	IrRing* ring;
+	SerialReciever* ring;
 
 public:
 	Calibration(ApplicationInnit* a);
