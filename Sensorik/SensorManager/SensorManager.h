@@ -26,24 +26,24 @@ public:
 	// as an instance of the button class.
 	Button* getButtonByName(String n);
 
-	void createBno055(int p, String n);
+	Bno055* createBno055(int p, String n);
 	Bno055* getBno055ByName(String n);
 
-	void createSr04(int trig, int echo, String n);
+	Sr04* createSr04(int trig, int echo, String n);
 	Sr04* getSr04ByName(String n);
 
-	void createIrSensor(int p, String n, float a);
+	IrSensor* createIrSensor(int p, String n, float a);
 	IrSensor* getIrSensorByName(String n);
 	IrSensor* getIrSensorByIndex(int i);
 	IrSensor* getIrSensorByAngle(float angle);
 
-	void createIrRing(String n);
+	IrRing* createIrRing(String n);
 	IrRing* getIrRingByName(String n);
 
-	void createButtonCross(String n, int pin, float v1, float v2, float v3, float v4, float v5);
+	ButtonCross* createButtonCross(String n, int pin, float v1, float v2, float v3, float v4, float v5);
 	ButtonCross* getButtonCrossByName(String n);
 
-	void createEZ(int p, String n);
+	EZ* createEZ(int p, String n);
 	EZ* getEZByName(String n);
 };
 

@@ -17,14 +17,14 @@ public:
 	OutputManager(ApplicationInnit* a);
 
 	// Creates an instance of the led class and add's that to the outputlist.
-	void createLed(int p, String n);
+	Led* createLed(int p, String n);
 	// Searches all sensors for the given name and returns it, 
 	// as an instance of the led class. 
 	Led* getLedByName(String n);
 
-	void createMotor(int pInA, int pInB, int pPwm, int pAmp, String n, bool turnDirection = true); 
+	Motor* createMotor(int pInA, int pInB, int pPwm, int pAmp, String n, bool turnDirection = true); 
 	Motor* getMotorByName(String n);
 
-	void createSsd1306(String n);
+	Ssd1306* createSsd1306(String n);
 	Ssd1306* getSsd1306ByName(String n);
 };

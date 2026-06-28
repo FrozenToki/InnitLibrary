@@ -24,9 +24,11 @@ Button* SensorManager::getButtonByName(String n) {
 }
 
 // === BNO055 ===
-void SensorManager::createBno055(int p, String n) {
+Bno055* SensorManager::createBno055(int p, String n) {
 	Bno055* bno = new Bno055(p, n, app);
 	app->getSensorList().addSensor(bno);
+
+	return bno;
 }
 
 Bno055* SensorManager::getBno055ByName(String n) {
@@ -37,9 +39,11 @@ Bno055* SensorManager::getBno055ByName(String n) {
 }
 
 // === SR04 ===
-void SensorManager::createSr04(int trig, int echo, String n)	{
+Sr04* SensorManager::createSr04(int trig, int echo, String n)	{
 	Sr04* sr04 = new Sr04(trig, echo, n, app);
 	app->getSensorList().addSensor(sr04);
+
+	return sr04;
 }
 
 Sr04 *SensorManager::getSr04ByName(String n)
@@ -50,9 +54,11 @@ Sr04 *SensorManager::getSr04ByName(String n)
 
 // === IR_SENSOR ===
 
-void SensorManager::createIrSensor(int p, String n, float a) {
+IrSensor* SensorManager::createIrSensor(int p, String n, float a) {
 	IrSensor* i = new IrSensor(p, n, a, app);
 	app->getSensorList().addSensor(i);
+
+	return i;
 }
 
 IrSensor* SensorManager::getIrSensorByName(String n) {
@@ -73,9 +79,11 @@ IrSensor *SensorManager::getIrSensorByAngle(float angle) {
 
 // === IR_RING ===
 
-void SensorManager::createIrRing(String n) {
+IrRing* SensorManager::createIrRing(String n) {
 	IrRing* irRing = new IrRing(n, app);
 	app->getSensorList().addSensor(irRing); 
+
+	return irRing;
 }
 
 IrRing* SensorManager::getIrRingByName(String n) {
@@ -86,9 +94,11 @@ IrRing* SensorManager::getIrRingByName(String n) {
 
 // === BUTTON_CROSS ===
 
-void SensorManager::createButtonCross(String n, int pin, float v1, float v2, float v3, float v4, float v5) {
+ButtonCross* SensorManager::createButtonCross(String n, int pin, float v1, float v2, float v3, float v4, float v5) {
 	ButtonCross* buttonCross = new ButtonCross(n, pin, v1, v2, v3, v4, v5, app);
 	app->getSensorList().addSensor(buttonCross);
+
+	return buttonCross;
 }
 
 ButtonCross *SensorManager::getButtonCrossByName(String n) {
@@ -98,9 +108,11 @@ ButtonCross *SensorManager::getButtonCrossByName(String n) {
 
 // === EZ ===
 
-void SensorManager::createEZ(int p, String n) {
+EZ* SensorManager::createEZ(int p, String n) {
 	EZ* ez = new EZ(p, n, app);
 	app->getSensorList().addSensor(ez);
+
+	return ez;
 }
 
 EZ *SensorManager::getEZByName(String n) {
