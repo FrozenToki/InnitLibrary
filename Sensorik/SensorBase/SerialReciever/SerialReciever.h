@@ -8,7 +8,7 @@
     typedef HardwareSerial BoardSerialType;
 #endif
 
-const byte numChars = 32;
+const byte numChars = 128;
 
 class SerialReciever : public SensorBase {
 private:
