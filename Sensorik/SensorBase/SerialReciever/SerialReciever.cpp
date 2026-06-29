@@ -1,9 +1,10 @@
 #include "SerialReciever.h"
 
-SerialReciever::SerialReciever(HardwareSerialIMXRT* s,String n, uint8_t valueCount, ApplicationInnit* a) : SensorBase(0, n, a), serialType(s), valueCount(valueCount)  {
+SerialReciever::SerialReciever(HardwareSerialIMXRT* s,String n, uint8_t valueCount, ApplicationInnit* a) : SensorBase(0, n, a), valueCount(valueCount), serialType(s)  {
 	values = new float[valueCount]();  
 	
-	serialType->begin(115200);
+	serialType->begin(2000000);
+	Serial3.addMemoryForRead(new uint8_t[1024], 1024);
 	
 }
 // https://forum.arduino.cc/t/serial-input-basics-updated/382007/3
@@ -14,13 +15,17 @@ SerialReciever::SerialReciever(HardwareSerialIMXRT* s,String n, uint8_t valueCou
 
 void SerialReciever::update() {
 	this->recvWithStartEndMarkers();
+
+	
 	if (newData == true) {
+		
 		strcpy(tempChars, receivedChars);
 			// this temporary copy is necessary to protect the original data
 			//   because strtok() used in parseData() replaces the commas with \0
+			newData = false;
 		this->parseData();
 		//showParsedData();
-		newData = false;
+		
 	}
 }
 
@@ -45,6 +50,7 @@ void SerialReciever::recvWithStartEndMarkers() {
 				receivedChars[ndx] = '\0';
 				recvInProgress = false;
 				newData = true;
+				newDataSinceLastRead = true;
 			}
 			else {
 				if (ndx < numChars - 1) {
@@ -65,10 +71,12 @@ void SerialReciever::recvWithStartEndMarkers() {
 
 void SerialReciever::parseData() {
     char* ptr = tempChars;
+		
     
     for (uint8_t i = 0; i < valueCount; i++) {
         char* next;
         values[i] = strtof(ptr, &next);
+				
         
         if (ptr == next) break;  // kein gültiger Wert mehr
         
@@ -87,12 +95,21 @@ void SerialReciever::showParsedData() {
 	Serial.println(strengthFromRing);
 }
 
+bool SerialReciever::isNewDataAvailable() {
+	if (newDataSinceLastRead) {
+		newDataSinceLastRead = false;  // hier zurücksetzen
+		return true;
+	}
+	return false;
+}
+
 float SerialReciever::rawData() {
 	return 0.0f;
 }
 
 float SerialReciever::getValue(uint8_t i) {
-	i++;
+	newDataSinceLastRead = false;
+	i--;
 	if (i < valueCount) {
 		return values[i];
 	} 

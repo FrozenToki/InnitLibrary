@@ -14,6 +14,7 @@ private:
 	float angleFromRing = 0.0;
 
 	bool newData = false;
+	bool newDataSinceLastRead = false;
 	
 	uint8_t valueCount;
 	float* values; 
@@ -26,6 +27,8 @@ public:
 	void recvWithStartEndMarkers();
 	void parseData();
 	void showParsedData();
+
+	bool isNewDataAvailable();
 
 	float rawData() override;
 
