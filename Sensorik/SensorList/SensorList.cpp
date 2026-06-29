@@ -29,14 +29,14 @@ SensorBase* SensorList::getSensorByName(const String& n) {
 	return nullptr;
 }
 
-SensorBase *SensorList::getSensorByAngle(float angle){
-	for (int i = 0; i < sensorCount; i++) {
-		if (sensorList[i]->getAngle() == angle) {
-			return sensorList[i];
-		}
-	}
-	return nullptr;
-}
+//SensorBase *SensorList::getSensorByAngle(float angle){
+//	for (int i = 0; i < sensorCount; i++) {
+//		if (sensorList[i]->getAngle() == angle) {
+//			return sensorList[i];
+//		}
+//	}
+//	return nullptr;
+//}
 
 SensorBase* SensorList::get(int index) {
 	if (index < 0 || index >= sensorCount) {

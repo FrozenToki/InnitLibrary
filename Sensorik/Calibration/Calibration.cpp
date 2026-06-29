@@ -12,7 +12,7 @@ void Calibration::setIrSensors(IrSensor* left, IrSensor* right) {
 	irR = right;
 }
 
-void Calibration::setIrRing(IrRing* ringPtr) {
+void Calibration::setIrRing(SerialReciever* ringPtr) {
 	ring = ringPtr;
 }
 
@@ -73,7 +73,7 @@ void Calibration::calibrateIrRing() {
 		while (millis() - t < 15000) {
 			ring->update();
 
-			float ringStrenght = ring->getStrength() * 8;
+			float ringStrenght = ring->getValue(2) * 8;
  
 			float distanceRaw = ((1/sqrt(ringStrenght)) * 2000);
 			v1 += (distanceRaw -  65)*2;

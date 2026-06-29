@@ -14,6 +14,9 @@ private:
 	float angleFromRing = 0.0;
 
 	bool newData = false;
+	
+	uint8_t valueCount;
+	float* values; 
 
 	HardwareSerialIMXRT* serialType;
 
@@ -26,6 +29,5 @@ public:
 
 	float rawData() override;
 
-	float getAngle();
-	float getStrength();
+	float getValue(uint8_t i);
 };

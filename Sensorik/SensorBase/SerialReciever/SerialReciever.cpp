@@ -1,6 +1,8 @@
 #include "SerialReciever.h"
 
 SerialReciever::SerialReciever(HardwareSerialIMXRT* s,String n, ApplicationInnit* a) : SensorBase(0, n, a), serialType(s)  {
+	values = new float[valueCount]();  
+	
 	serialType->begin(115200);
 	
 }
@@ -61,15 +63,17 @@ void SerialReciever::recvWithStartEndMarkers() {
 
 //============
 
-void SerialReciever::parseData() {      // split the data into its parts
-
-    //Serial.print("RAW: ");
-    //Serial.println(tempChars);
-
-    if (sscanf(tempChars, "%f,%f", &angleFromRing, &strengthFromRing) == 2) {
-        // ok
-    } else {
-        //Serial.println("Parse failed");
+void SerialReciever::parseData() {
+    char* ptr = tempChars;
+    
+    for (uint8_t i = 0; i < valueCount; i++) {
+        char* next;
+        values[i] = strtof(ptr, &next);
+        
+        if (ptr == next) break;  // kein gültiger Wert mehr
+        
+        ptr = next;
+        if (*ptr == ',') ptr++;  // Komma überspringen
     }
 }
 
@@ -87,10 +91,12 @@ float SerialReciever::rawData() {
 	return 0.0f;
 }
 
-float SerialReciever::getAngle() {
-	return angleFromRing;
+float SerialReciever::getValue(uint8_t i) {
+	i++;
+	if (i < valueCount) {
+		return values[i];
+	} 
+	return 0.0f;
 }
 
-float SerialReciever::getStrength() {
-	return strengthFromRing;
-}
+

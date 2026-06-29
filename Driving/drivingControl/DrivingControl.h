@@ -1,7 +1,7 @@
 #pragma once
 #include "Arduino.h"
 #include "Outputs/OutputBase/Motor/Motor.h"
-#include "Sensorik/SensorBase/IrRing/IrRing.h"
+#include "Sensorik/SensorBase/SerialReciever/SerialReciever.h"
 
 class ApplicationInnit;
 
@@ -13,7 +13,7 @@ private:
     Motor* frontRight;
     ApplicationInnit* app;
 
-		IrRing* ring;
+		SerialReciever* serialReciever;
 
 		float ampFactor = 1;
 

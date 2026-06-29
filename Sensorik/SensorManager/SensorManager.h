@@ -35,9 +35,9 @@ public:
 	IrSensor* createIrSensor(int p, String n, float a);
 	IrSensor* getIrSensorByName(String n);
 	IrSensor* getIrSensorByIndex(int i);
-	IrSensor* getIrSensorByAngle(float angle);
 
-	SerialReciever* createSerialReciever(String n);
+
+	SerialReciever* createSerialReciever(HardwareSerialIMXRT* serialConnection, String n);
 	SerialReciever* getSerialRecieverByName(String n);
 
 	ButtonCross* createButtonCross(String n, int pin, float v1, float v2, float v3, float v4, float v5);

@@ -29,9 +29,9 @@ public:
 	int& getPinRef();
 	String& getNameRef();
 
-	virtual float getAngle() {
-		return 0.0f;
-	}
+	//virtual float getAngle() {
+	//	return 0.0f;
+	//}
 
 	virtual void update() = 0;
 	virtual float rawData() = 0;

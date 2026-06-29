@@ -1,10 +1,9 @@
 #pragma once
 #include <Arduino.h>
+#include "Sensorik/SensorManager/SensorManager.h"
 
 class ApplicationInnit;
-class ButtonCross;
-class IrSensor;
-class SerialReciever;
+
 
 class Calibration {
 private:
@@ -20,7 +19,7 @@ public:
 
 	void setButtonCross(ButtonCross* button);
 	void setIrSensors(IrSensor* left, IrSensor* right);
-	void setIrRing(IrRing* ringPtr);
+	void setIrRing(SerialReciever* ringPtr);
 
 	void calibrateIrSensors();
 	void calibrateIrRing();
