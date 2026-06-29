@@ -21,7 +21,7 @@ private:
 	HardwareSerialIMXRT* serialType;
 
 public:
-	SerialReciever(HardwareSerialIMXRT* s ,String n, ApplicationInnit* a);
+	SerialReciever(HardwareSerialIMXRT* s ,String n, uint8_t valueCount, ApplicationInnit* a);
 	void update() override;
 	void recvWithStartEndMarkers();
 	void parseData();

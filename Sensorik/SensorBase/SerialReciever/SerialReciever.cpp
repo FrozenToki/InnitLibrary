@@ -1,6 +1,6 @@
 #include "SerialReciever.h"
 
-SerialReciever::SerialReciever(HardwareSerialIMXRT* s,String n, ApplicationInnit* a) : SensorBase(0, n, a), serialType(s)  {
+SerialReciever::SerialReciever(HardwareSerialIMXRT* s,String n, uint8_t valueCount, ApplicationInnit* a) : SensorBase(0, n, a), serialType(s), valueCount(valueCount)  {
 	values = new float[valueCount]();  
 	
 	serialType->begin(115200);

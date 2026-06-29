@@ -75,8 +75,8 @@ IrSensor* SensorManager::getIrSensorByIndex(int i) {
 
 // === IR_RING ===
 
-SerialReciever* SensorManager::createSerialReciever(HardwareSerialIMXRT* serialConnection,String n) {
-	SerialReciever* serialReciever = new SerialReciever(serialConnection, n, app);
+SerialReciever* SensorManager::createSerialReciever(HardwareSerialIMXRT* serialConnection,String n, uint8_t valueCount) {
+	SerialReciever* serialReciever = new SerialReciever(serialConnection, n, valueCount, app);
 	app->getSensorList().addSensor(serialReciever); 
 
 	return serialReciever;
