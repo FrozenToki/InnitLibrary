@@ -2,6 +2,12 @@
 #include <Arduino.h>
 #include "Sensorik/SensorBase/SensorBase.h"
 
+#if defined(ARDUINO_ARCH_IMXRT)
+    typedef HardwareSerialIMXRT BoardSerialType;
+#else
+    typedef HardwareSerial BoardSerialType;
+#endif
+
 const byte numChars = 32;
 
 class SerialReciever : public SensorBase {
@@ -19,10 +25,10 @@ private:
 	uint8_t valueCount;
 	float* values; 
 
-	HardwareSerialIMXRT* serialType;
+	BoardSerialType* serialType;
 
 public:
-	SerialReciever(HardwareSerialIMXRT* s ,String n, uint8_t valueCount, ApplicationInnit* a);
+	SerialReciever(BoardSerialType* s ,String n, uint8_t valueCount, ApplicationInnit* a);
 	void update() override;
 	void recvWithStartEndMarkers();
 	void parseData();

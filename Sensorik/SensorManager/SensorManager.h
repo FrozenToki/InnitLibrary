@@ -9,6 +9,12 @@
 #include "Sensorik/SensorBase/ButtonCross/ButtonCross.h"
 #include "Sensorik/SensorBase/EZ/EZ.h"
 
+#if defined(ARDUINO_ARCH_IMXRT)
+    typedef HardwareSerialIMXRT BoardSerialType;
+#else
+    typedef HardwareSerial BoardSerialType;
+#endif
+
 // forward declaration
 class ApplicationInnit; 
 
@@ -37,7 +43,7 @@ public:
 	IrSensor* getIrSensorByIndex(int i);
 
 
-	SerialReciever* createSerialReciever(HardwareSerialIMXRT* serialConnection, String n, uint8_t valueCount);
+	SerialReciever* createSerialReciever(BoardSerialType* serialConnection, String n, uint8_t valueCount);
 	SerialReciever* getSerialRecieverByName(String n);
 
 	ButtonCross* createButtonCross(String n, int pin, float v1, float v2, float v3, float v4, float v5);

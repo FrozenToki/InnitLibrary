@@ -1,10 +1,10 @@
 #include "SerialReciever.h"
 
-SerialReciever::SerialReciever(HardwareSerialIMXRT* s,String n, uint8_t valueCount, ApplicationInnit* a) : SensorBase(0, n, a), valueCount(valueCount), serialType(s)  {
+SerialReciever::SerialReciever(BoardSerialType* s,String n, uint8_t valueCount, ApplicationInnit* a) : SensorBase(0, n, a), valueCount(valueCount), serialType(s)  {
 	values = new float[valueCount]();  
 	
 	serialType->begin(2000000);
-	Serial3.addMemoryForRead(new uint8_t[1024], 1024);
+	//serialType->addMemoryForRead(new uint8_t[1024], 1024);
 	
 }
 // https://forum.arduino.cc/t/serial-input-basics-updated/382007/3
