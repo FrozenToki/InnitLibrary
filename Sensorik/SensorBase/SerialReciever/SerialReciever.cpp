@@ -38,6 +38,10 @@ void SerialReciever::recvWithStartEndMarkers() {
 	while (serialType->available() > 0) {
 		rc = serialType->read();
 
+		if (rc == 'R') {
+			sendingRequestAvailable = true;
+		}
+
 		// IMMER neu starten bei <
 		if (rc == '<') {
 			recvInProgress = true;
@@ -103,12 +107,20 @@ bool SerialReciever::isNewDataAvailable() {
 	return false;
 }
 
+bool SerialReciever::isSendingRequestAvailable() {
+	if (sendingRequestAvailable) {
+		sendingRequestAvailable = false;  // hier zurücksetzen
+		return true;
+	}
+	return false;
+}
+
 float SerialReciever::rawData() {
 	return 0.0f;
 }
 
 float SerialReciever::getValue(uint8_t i) {
-	newDataSinceLastRead = false;
+	
 	i--;
 	if (i < valueCount) {
 		return values[i];

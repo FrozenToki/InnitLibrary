@@ -22,6 +22,8 @@ private:
 	bool newData = false;
 	bool newDataSinceLastRead = false;
 	
+	bool sendingRequestAvailable = false;
+
 	uint8_t valueCount;
 	float* values; 
 
@@ -35,6 +37,7 @@ public:
 	void showParsedData();
 
 	bool isNewDataAvailable();
+	bool isSendingRequestAvailable();
 
 	float rawData() override;
 
