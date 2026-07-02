@@ -18,7 +18,7 @@ class Bno055 : public SensorBase {
 		float calibratedValue = 0;
 		uint8_t system, gyro, accel, mag;
 	public:
-		Bno055 (int p, String n, ApplicationInnit* a);
+		Bno055 (String n, ApplicationInnit* a);
 		void update() override;
 		float rawData() override;
 		void calibrate();

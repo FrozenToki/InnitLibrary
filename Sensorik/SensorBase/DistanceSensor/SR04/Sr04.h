@@ -1,10 +1,10 @@
 #pragma once
 #include <Arduino.h>
-#include "Sensorik/SensorBase/SensorBase.h"
+#include "Sensorik/SensorBase/DistanceSensor/DistanceSensor.h"
 
 
 
-class Sr04 : public SensorBase {
+class Sr04 : public DistanceSensor {
 	private: 
 		int pinTrig;
 		int pinEcho;

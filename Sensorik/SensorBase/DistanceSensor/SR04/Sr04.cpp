@@ -1,6 +1,6 @@
 #include "Sr04.h"
 
-Sr04::Sr04(int pinT, int pinE, String n, ApplicationInnit* a) : SensorBase(0, n, a), pinTrig(pinT), pinEcho(pinE) {
+Sr04::Sr04(int pinT, int pinE, String n, ApplicationInnit* a) : DistanceSensor(n, a), pinTrig(pinT), pinEcho(pinE) {
 	pinMode(pinTrig, OUTPUT);
 	pinMode(pinEcho, INPUT);
 }

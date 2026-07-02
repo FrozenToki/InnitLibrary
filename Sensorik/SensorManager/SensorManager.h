@@ -3,11 +3,12 @@
 #include "Sensorik/SensorBase/Button/Button.h"
 #include "Sensorik/SensorList/SensorList.h"
 #include "Sensorik/SensorBase/Bno055/Bno055.h"
-#include "Sensorik/SensorBase/SR04/Sr04.h"
+#include "Sensorik/SensorBase/DistanceSensor/DistanceSensor.h"
+#include "Sensorik/SensorBase/DistanceSensor/EZ/EZ.h"
+#include "Sensorik/SensorBase/DistanceSensor/SR04/Sr04.h"
 #include "Sensorik/SensorBase/IrSensors/IrSensors.h"
 #include "Sensorik/SensorBase/SerialReciever/SerialReciever.h"
 #include "Sensorik/SensorBase/ButtonCross/ButtonCross.h"
-#include "Sensorik/SensorBase/EZ/EZ.h"
 
 #if defined(ARDUINO_ARCH_IMXRT)
     typedef HardwareSerialIMXRT BoardSerialType;
@@ -32,7 +33,7 @@ public:
 	// as an instance of the button class.
 	Button* getButtonByName(String n);
 
-	Bno055* createBno055(int p, String n);
+	Bno055* createBno055(String n);
 	Bno055* getBno055ByName(String n);
 
 	Sr04* createSr04(int trig, int echo, String n);

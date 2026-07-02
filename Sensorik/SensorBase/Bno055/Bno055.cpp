@@ -1,7 +1,6 @@
 #include "Bno055.h"
 
-Bno055::Bno055(int p, String n, ApplicationInnit* a) : SensorBase(p, n, a) {
-	type = BNO055;
+Bno055::Bno055(String n, ApplicationInnit* a) : SensorBase(n, a) {
 	bno = Adafruit_BNO055(55, 0x28, &Wire);
 	Wire.begin() ;
 	Wire.setClock(10000);

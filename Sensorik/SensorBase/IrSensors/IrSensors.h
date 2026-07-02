@@ -5,8 +5,9 @@
 
 class IrSensor : public SensorBase {
 private:
-	int pin;
+	
 	float angle;
+	int pin;
 	float avrgAngle;
 	float calculatedValue;
 	Vector vec;

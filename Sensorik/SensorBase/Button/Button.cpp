@@ -1,7 +1,6 @@
 #include "Button.h"
 
-Button::Button(int p, String n, ApplicationInnit* a) : SensorBase(p, n, a) {
-	type = BUTTON;
+Button::Button(int p, String n, ApplicationInnit* a) : SensorBase(n, a), pin(p) {
 	pinMode(pin, INPUT_PULLDOWN);  
 }
 

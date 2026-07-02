@@ -2,7 +2,7 @@
 #include "app/ApplicationInnit.h"
 
 ButtonCross::ButtonCross(String n, int p, float v1, float v2, float v3, float v4, float v5,ApplicationInnit* a) 
-: SensorBase(p, n, a) {
+: SensorBase(n, a), pin(p) {
 	setValues.resize(5);
 	setValues[0] = v1;
 	setValues[1] = v2;

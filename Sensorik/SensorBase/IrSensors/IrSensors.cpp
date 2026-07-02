@@ -1,6 +1,6 @@
 #include "IrSensors.h"
 
-IrSensor::IrSensor(int p, String n, float a, ApplicationInnit* b) : SensorBase(p, n, b), angle(a) {
+IrSensor::IrSensor(int p, String n, float a, ApplicationInnit* b) : SensorBase(n, b), angle(a), pin(p) {
 	pinMode(p, INPUT_PULLUP);
 }
 

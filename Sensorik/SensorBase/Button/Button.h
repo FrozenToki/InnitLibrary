@@ -5,6 +5,7 @@
 // The buttons must be connected to plus and don't need an external pulldown resistor.
 class Button : public SensorBase {
 private:
+	int pin;
 public:
 	Button (int p,String n, ApplicationInnit* a);
 	void update() override;

@@ -15,17 +15,12 @@ Button *SensorManager::createButton(int p, String n) {
 
 Button* SensorManager::getButtonByName(String n) {
 	SensorBase* sensor = app->getSensorList().getSensorByName(n);
-	String sensorType;
-	sensorType = sensor->getType();
-	//if(sensor_type != SensorBase::BUTTON){
-	//	__throw_invalid_argument( "Sensor is not a button, dude!" );
-	//}
 	return static_cast<Button*>(sensor);
 }
 
 // === BNO055 ===
-Bno055* SensorManager::createBno055(int p, String n) {
-	Bno055* bno = new Bno055(p, n, app);
+Bno055* SensorManager::createBno055(String n) {
+	Bno055* bno = new Bno055(n, app);
 	app->getSensorList().addSensor(bno);
 
 	return bno;
@@ -33,8 +28,6 @@ Bno055* SensorManager::createBno055(int p, String n) {
 
 Bno055* SensorManager::getBno055ByName(String n) {
 	SensorBase* sensor = app->getSensorList().getSensorByName(n);
-	String sensorType;
-	sensorType = sensor->getType();
 	return static_cast<Bno055*>(sensor);
 }
 
