@@ -43,7 +43,7 @@ public:
 	IrSensor* getIrSensorByIndex(int i);
 
 
-	SerialReciever* createSerialReciever(BoardSerialType* serialConnection, String n, uint8_t valueCount);
+	SerialReciever* createSerialReciever(BoardSerialType* serialConnection, String n, uint8_t valueCount, unsigned long Baudrate);
 	SerialReciever* getSerialRecieverByName(String n);
 
 	ButtonCross* createButtonCross(String n, int pin, float v1, float v2, float v3, float v4, float v5);

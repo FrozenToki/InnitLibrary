@@ -2,6 +2,8 @@
 #include <Arduino.h>
 #include "Sensorik/SensorBase/SensorBase.h"
 
+class ApplicationInnit;
+
 #if defined(ARDUINO_ARCH_IMXRT)
     typedef HardwareSerialIMXRT BoardSerialType;
 #else
@@ -30,7 +32,7 @@ private:
 	BoardSerialType* serialType;
 
 public:
-	SerialReciever(BoardSerialType* s ,String n, uint8_t valueCount, ApplicationInnit* a);
+	SerialReciever(BoardSerialType* s ,String n, uint8_t valueCount, unsigned long baudrate, ApplicationInnit* a);
 	void update() override;
 	void recvWithStartEndMarkers();
 	void parseData();

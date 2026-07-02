@@ -1,9 +1,10 @@
 #include "SerialReciever.h"
+#include "app/ApplicationInnit.h"
 
-SerialReciever::SerialReciever(BoardSerialType* s,String n, uint8_t valueCount, ApplicationInnit* a) : SensorBase(0, n, a), valueCount(valueCount), serialType(s)  {
+SerialReciever::SerialReciever(BoardSerialType* s,String n, uint8_t valueCount, unsigned long baudrate, ApplicationInnit* a) : SensorBase(0, n, a), valueCount(valueCount), serialType(s)  {
 	values = new float[valueCount]();  
 	
-	serialType->begin(2000000);
+	serialType->begin(baudrate);
 	//serialType->addMemoryForRead(new uint8_t[1024], 1024);
 	
 }

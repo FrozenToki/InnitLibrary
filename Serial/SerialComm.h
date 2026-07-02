@@ -3,6 +3,11 @@
 #include <vector>
 #include "Sensorik/SensorBase/SensorBase.h"  
 
+#define SLOW_BAUDRATE 9600
+#define NORMAL_BAUDRATE 115200
+#define FAST_BAUDRATE 500000
+#define VERY_FAST_BAUDRATE 2000000
+
 // forward declaration
 class ApplicationInnit; 
 
