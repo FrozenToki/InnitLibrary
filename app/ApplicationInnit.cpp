@@ -4,7 +4,7 @@ ApplicationInnit::ApplicationInnit() : sensorManager(this), sensorList(this),
 	outputManager(this), outputList(this), drivingControl(this),
 	rotationControl(this), serialComm(this), geometry(this), 
 	irSensorReader(this), menuManager(this), calibration(this), 
-	ballPositionReader(this) {} 
+	ballAngleReader(this), ballDistanceReader(this) {} 
 
 SensorList& ApplicationInnit::getSensorList() {
 	return sensorList;
@@ -60,6 +60,10 @@ Calibration& ApplicationInnit::getCalibration() {
 	return calibration;
 }
 
-BallPositionReader &ApplicationInnit::getBallPositionReader() {
- return ballPositionReader;
+BallAngleReader &ApplicationInnit::getBallAngleReader() {
+ return ballAngleReader;
+}
+
+BallDistanceReader &ApplicationInnit::getBallDistanceReader() {
+	return ballDistanceReader;
 }

@@ -5,40 +5,33 @@
 #include "MovingAverage/MovingAverage.h"
 #include "InnitConfig/Config.h"
 #include <vector>
+#include <cmath>
 
 
 // forward declaration
 class ApplicationInnit;
 
-class BallPositionReader {
+class BallDistanceReader {
 private: 
 
 	std::vector<IrSensor*> irSensList;
-	std::vector<float> valueList;
 	std::vector<IrSensor*> hightestSensors;
 	ApplicationInnit* app;
 
-	Vector ballVector;
+	float averageDistance;
 
-	std::vector<MovingAverage*> highSensAngleAvrg;
-	std::vector<MovingAverage*> highSensValAvrg;
+	float smoothedAverageDistance;
 
 	size_t irSensCount;
-
 public: 
-	BallPositionReader(ApplicationInnit* a);
-	void initializeBallPositionReader(size_t irSensorCount);
+	BallDistanceReader(ApplicationInnit* a);
+	void initializeBallDistReader(size_t irSensorCount);
 	
-	void setValues();
+	float getAverageDistance();
+	float getSmoothedAverageDistance();
 	
-	std::vector<float> getValues();
-	
-	void setHighestSensor();
+	void setHighestSensor(int numberOfHighestSensor);
 	
 	std::vector<IrSensor*> getHighestSensors();
-	
-	void setHighestSensVec();
-	void addHighestSensVec();
 
-	Vector getBallVector();
 };

@@ -1,6 +1,6 @@
 #include "IrSensors.h"
 
-IrSensor::IrSensor(int p, String n, float a, ApplicationInnit* b) : SensorBase(n, b), angle(a), pin(p) {
+IrSensor::IrSensor(int p, String n, float a, ApplicationInnit* b) : SensorBase(n, b), angle(a), pin(p), smoothedValue(12) {
 	pinMode(p, INPUT_PULLUP);
 }
 
@@ -37,6 +37,19 @@ float IrSensor::getCalculatedValue(){
 
 void IrSensor::setCalculatedValue(float v) {
 	calculatedValue = v;
+	smoothedValue.newValue(v);
+}
+
+float IrSensor::getSmoothedCalculatedValue() {
+	return smoothedValue.getAverage();
+}
+
+float IrSensor::getWeightedValue() {
+	return weightedValue;
+}
+
+void IrSensor::setWeightedValue(float v) {
+	weightedValue = v;
 }
 
 Vector IrSensor::getVector() {

@@ -15,7 +15,8 @@
 #include "Sensorik/Calibration/Calibration.h"
 #include "Serial/ValuePool/SerialValuePool.h"
 #include "MovingAverage/MovingAverage.h"
-#include "Detection/BallPositionDetection/BallPositionReader.h"
+#include "Detection/BallPositionDetection/BallAngleReader.h"
+#include "Detection/BallPositionDetection/BallDistanceReader.h"
 
 // Used to get acces to all the parts of the library from anywhere in the programm.
 // It has instances of all the different main parts of the library.
@@ -43,7 +44,8 @@ private:
 
 	Calibration calibration;
 
-	BallPositionReader ballPositionReader;
+	BallAngleReader ballAngleReader;
+	BallDistanceReader ballDistanceReader;
 public:
 	SensorList& getSensorList();
 	SensorManager& getSensorManager();
@@ -67,7 +69,8 @@ public:
 
 	Calibration& getCalibration();
 
-	BallPositionReader& getBallPositionReader();
+	BallAngleReader& getBallAngleReader();
+	BallDistanceReader& getBallDistanceReader();
 
 	void softwareReset();
 

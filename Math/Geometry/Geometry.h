@@ -13,7 +13,8 @@ public:
 	Geometry(ApplicationInnit* a);
 	float normalizeAngle(float angle);
 
-	std::tuple<float, float> vectorToAngle(Vector v);
+	float vectorToAngle(Vector v);
+	std::tuple<float, float> vectorToAngleAndStrenght(Vector v);
 
 	Vector angleToVector(float angle, float strength);
 	float radToAngle(float rad);

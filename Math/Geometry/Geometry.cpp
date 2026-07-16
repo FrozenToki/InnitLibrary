@@ -13,7 +13,17 @@ float Geometry::normalizeAngle(float angle) {
 	return angle;
 }
 
-std::tuple<float, float> Geometry::vectorToAngle(Vector v){
+float Geometry::vectorToAngle(Vector v){
+	
+	float angle;
+	angle = std::atan2(v.getY(), v.getX());
+	//if(angle < 0) {
+	//	angle += 360.0f;
+	//}
+	return angle;
+} 
+
+std::tuple<float, float> Geometry::vectorToAngleAndStrenght(Vector v){
 	float strength;
 	strength = std::sqrt(v.getX() * v.getX() + v.getY() * v.getY());
 	 
